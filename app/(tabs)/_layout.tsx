@@ -12,22 +12,43 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarStyle: {
+          backgroundColor: '#FFFFFF',
+          borderTopWidth: 0.5,
+          borderColor: '#E0E0E0',
+        },
+        tabBarActiveTintColor: '#000000', // 예: 검은색 (활성)
+        tabBarInactiveTintColor: '#8e8e93', // 예: 회색 (비활성)
         headerShown: false,
+        tabBarShowLabel: false,
         tabBarButton: HapticTab,
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={24} name="house.fill" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="search"
+        listeners={{
+          tabPress: (e) => {
+            e.preventDefault();
+          }
+        }}
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={24} name="magnifyingglass" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="user"
+        listeners={{
+          tabPress: (e) => {
+            e.preventDefault();
+          }
+        }}
+        options={{
+          tabBarIcon: ({ color }) => <IconSymbol size={24} name="person" color={color} />,
         }}
       />
     </Tabs>
